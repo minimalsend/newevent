@@ -266,7 +266,7 @@ def parse_response(content):
 def load_tokens():
     try:
         # Link direto para o JSON BR
-        url = "https://scvirtual.alphi.media/botsistem/sendlike/token_br.json"
+        url = "https://scvirtual.alphi.media/botsistem/sendlike/tokenbr.json"
         
         response = requests.get(url)
         response.raise_for_status()  # Verifica se a requisição foi bem-sucedida
@@ -586,7 +586,7 @@ def get_player_info():
             }), 403
 
         # 🔑 Obter token JWT
-        jwt_token = get_single_response()
+        jwt_token = load_tokens()
         if not jwt_token:
             return jsonify({
                 "credits": "TEAM-AKIRU",
@@ -677,4 +677,5 @@ def get_player_info():
             "timestamp": datetime.now().strftime("%Y-%m-%d %H:%M:%S")
         }), 500
 if __name__ == '__main__':
+
     app.run(host='0.0.0.0', port=5000, debug=True)
